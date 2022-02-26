@@ -322,7 +322,7 @@ class Table:
 
     async def drop(self):
         """Drop table from database."""
-        await self.database.execute(Statement(f"DROP TABLE {self.name};"))
+        await self.database.execute(Statement(f"DROP TABLE IF EXISTS {self.name};"))
 
     async def select(
         self,
@@ -489,7 +489,7 @@ class Index:
 
     async def drop(self):
         """Drop index from database."""
-        await self.table.database.execute(Statement(f"DROP INDEX {self.name};"))
+        await self.table.database.execute(Statement(f"DROP INDEX IF EXISTS {self.name};"))
 
 
 def row_resource_class(
